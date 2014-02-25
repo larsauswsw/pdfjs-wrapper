@@ -9,7 +9,7 @@ module.exports = function(grunt) {'use strict';
         watch : {
             scripts : {
                 files : ['**/*.js'],
-                tasks : ['jshint'],
+                tasks : ['test'],
                 options : {
                     spawn : false
                 }
@@ -17,8 +17,17 @@ module.exports = function(grunt) {'use strict';
         },
         jshint : {
             all : ['Gruntfile.js', 'src/**/*.js', 'test/**/*.js']
+        },
+        jasmine : {
+            src : 'src/**/*.js',
+            options : {
+                specs : 'test/*.spec.js',
+                vendor : ['bower_components/jquery/dist/jquery.min.js']
+            }
         }
     });
 
-    grunt.registerTask('default', ['jshint', 'watch']);
+    grunt.registerTask('test', ['jshint', 'jasmine']);
+    grunt.registerTask('default', ['test', 'watch']);
+    grunt.registerTask('build', []);
 };
