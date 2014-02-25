@@ -1,0 +1,14 @@
+{
+  "name": "pdfjs-wrapper",
+  "description": "A simple jQuery wrapper for pdfjs",
+  "engine": "node 0.4.1",
+  "repository": {
+    "type": "git",
+    "url": "whatever"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "time-grunt": "~0.2.9",
+    "load-grunt-tasks": "~0.3.0"
+  }
+}
