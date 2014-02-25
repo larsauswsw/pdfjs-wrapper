@@ -8,10 +8,17 @@ module.exports = function(grunt) {'use strict';
     grunt.initConfig({
         watch : {
             scripts : {
-                files : ['**/*.js'],
-                tasks : ['test'],
+                files : ['Gruntfile.js', 'src/**/*.js', 'test/**/*.js'],
+                tasks : ['jshint', 'test'],
                 options : {
                     spawn : false
+                }
+            }
+        },
+        connect : {
+            test : {
+                options : {
+                    port : 8000
                 }
             }
         },
@@ -21,13 +28,15 @@ module.exports = function(grunt) {'use strict';
         jasmine : {
             src : 'src/**/*.js',
             options : {
+                keepRunner : true,
+                host : 'http://127.0.0.1:8000',
                 specs : 'test/*.spec.js',
-                vendor : ['bower_components/jquery/dist/jquery.min.js']
+                vendor : ['bower_components/jquery/dist/jquery.min.js', 'vendor/pdf.combined.js']
             }
         }
     });
 
-    grunt.registerTask('test', ['jshint', 'jasmine']);
-    grunt.registerTask('default', ['test', 'watch']);
+    grunt.registerTask('test', ['connect:test', 'jasmine']);
+    grunt.registerTask('default', ['jshint', 'test', 'watch']);
     grunt.registerTask('build', []);
 };
