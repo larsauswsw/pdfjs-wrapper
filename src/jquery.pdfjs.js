@@ -32,7 +32,7 @@
         this._init();
     };
     $[pluginName].prototype._init = function() {
-        console.log(this.pdfDocument = PDFJS.getDocumentSync(this.settings.url || base64ToUint8Array('JVBERi0xLjQKJcOkw7zDtsOfCjIgMCBvYmoKPDwv')));
+        console.log(this.pdfDocument = PDFJS.getDocument(this.settings.url || base64ToUint8Array('JVBERi0xLjQKJcOkw7zDtsOfCjIgMCBvYmoKPDwv')));
         this.canvas = $('<canvas>').appendTo(this.element.empty());
     };
     $[pluginName].prototype._renderPDF = function(pdfDocument) {
